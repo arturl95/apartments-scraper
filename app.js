@@ -10,7 +10,8 @@ const randomUserAgent = require('random-useragent');
         startUrls: ['https://www.apartments.com/hollywood-hills-los-angeles-ca']
     };
     */
-
+    const input = await Actor.getInput();
+    
     if (!input || !Array.isArray(input.startUrls) || input.startUrls.length === 0) {
         throw new Error('No valid Start URLs provided in the input.');
     }
