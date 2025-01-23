@@ -5,10 +5,11 @@ const randomUserAgent = require('random-useragent');
 (async () => {
     await Actor.init();
 
-    // Hardcoded input for testing
+    /* Hardcoded input for testing
     const input = await Actor.getInput() || {
         startUrls: ['https://www.apartments.com/hollywood-hills-los-angeles-ca']
     };
+    */
 
     if (!input || !Array.isArray(input.startUrls) || input.startUrls.length === 0) {
         throw new Error('No valid Start URLs provided in the input.');
@@ -88,7 +89,7 @@ const randomUserAgent = require('random-useragent');
     await crawler.run(startUrls);
 
     console.log(`Pushing ${allScrapedListings.length} listings to the dataset...`);
-    console.log(`Found listings ${JSON.stringify(allScrapedListings)}`);
+    //console.log(`Found listings ${JSON.stringify(allScrapedListings)}`);
 
     await Actor.pushData(allScrapedListings);
 
