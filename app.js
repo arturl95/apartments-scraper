@@ -7,7 +7,7 @@ const randomUserAgent = require('random-useragent');
 
     // Hardcoded input for testing
     const input = await Actor.getInput() || {
-        startUrls: ['https://www.apartments.com/hollywood-hills-los-angeles-ca/?bb=uj5hqnt0oNp_wsjwF']
+        startUrls: ['https://www.apartments.com/hollywood-hills-los-angeles-ca']
     };
 
     if (!input || !Array.isArray(input.startUrls) || input.startUrls.length === 0) {
@@ -88,6 +88,8 @@ const randomUserAgent = require('random-useragent');
     await crawler.run(startUrls);
 
     console.log(`Pushing ${allScrapedListings.length} listings to the dataset...`);
+    console.log(`Found listings ${JSON.stringify(allScrapedListings)}`);
+
     await Actor.pushData(allScrapedListings);
 
     console.log('Scraping completed. Data pushed to the dataset.');
